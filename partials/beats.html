@@ -1,0 +1,37 @@
+<div class="col-md-4" ng-show="beats.length">
+  <h4>Search Restaurants</h4>
+  <form class="form-inline" role="form">
+    <div class-"form-group">
+      <input ng-model="query" type="text" class="form-control" placeholder="Search">
+    </div>
+  </form>
+</div>
+
+<div ng-show="beats.length" class="col-md-5">
+  <h1>Here are the categories of the paper:</h1>
+  <ul>
+    <li ng-repeat="item in beats | filter:query">
+      <a ui-sref="beats.reporters({ beatId: item.id })">{{ item.name }}</a>
+        <ul>
+          <li ng-repeat= "item in item.reporters">
+            {{item.name}}
+          </li>
+        </ul>
+    </li>
+
+  </ul>
+</div>
+
+<div class="col-md-4">
+  <h3>Add a new beat!</h3>
+  <form ng-submit="BeatsFactory.addBeat()" class="form-inline" role="form">
+    <div class="form-group">
+      <input type="text" ng-model="BeatsFactory.beatName" class="form-control" placeholder="Enter a category name">
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>
+
+
+
+<div ui-view> </div>
